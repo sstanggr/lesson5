@@ -30,9 +30,9 @@ jobs:
           FORMAT_VAR: ${{ format('Github {0} {1} {2}', 'actions', 'is', 'awesome') }}
         run: |
           echo "this step runs a special script to clean up after failed step"
-          echo ${{ env_FORMAT_VAR }}
+          echo ${{ env.FORMAT_VAR }}
       - name: function and always status check
-        if: ${{ startWith(env.string, 'this') && always() );
+        if: ${{ startWith(env.string, 'this') && always() }}
         run: sleep 60
       - name: test cancel status check
         if: ${{ cancelled() }}
