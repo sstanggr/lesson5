@@ -17,10 +17,10 @@ jobs:
         if: (env.anull == null)
         run: echo this variable is null
       - name: test boolean
-        if: ${{ from JSOn(env.aboolean) }}
+        if: ${{ from JSON(env.aboolean) }}
         run: echo this job wont run as our variable is false
       - name: contains function
-        if: ${{ contains(env.aString, 'this')
+        if: ${{ contains(env.aString, 'this') }}
         run: |
           echo "Our string var contains the word this"
           echos "but here is a typo that will make this step fal"
