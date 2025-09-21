@@ -41,23 +41,23 @@ jobs:
         if: ${{ cancelled() }}
         run: echo "this job run if a worklow is cancelled, it can also be used for clean-up scrips"
         
-    test_variables:
-      if: (github.event_name == `pull_request`)
-      env:
+  test_variables:
+    if: (github.event_name == 'pull_request')
+    env:
       JOB_VAR: "Job level variable"
-      name: job to test variables
-      runs-on: ubuntu-latest
-      steps:
-      - name: test variables
-        id: steVar
-        env:
-          STEP_VAR: "Step level vaiable"
-        run: |
-          echo ${{ github.actor}}
-          echo $GITHUB.JOB
-          echo $WF_VAR
-          echo @ JOB_VAR
-          echo @ STEP_VAR
-          echo @{{ vars.CONF_VAR }}
-          echo ${{ secrets.A_SECRET }}
+    name: job to test variables
+    runs-on: ubuntu-latest
+    steps:
+    - name: test variables
+      id: stepVar
+      env:
+        STEP_VAR: "Step level vaiable"
+      run: |
+        echo ${{ github.actor}}
+        echo $GITHUB.JOB
+        echo $WF_VAR
+        echo @ JOB_VAR
+        echo @ STEP_VAR
+        echo @{{ vars.CONF_VAR }}
+        echo ${{ secrets.A_SECRET }}
            
