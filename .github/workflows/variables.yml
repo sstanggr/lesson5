@@ -14,7 +14,7 @@ jobs:
       aString: this is a string
     steps:
       - name: test null
-        if: (env.anull == null)
+        if: (env.aNull == null)
         run: echo this variable is null
       - name: test boolean
         if: ${{ fromJSON(env.aBoolean) }}
